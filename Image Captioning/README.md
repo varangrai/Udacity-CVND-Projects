@@ -21,6 +21,7 @@
 * Sample method in the DecoderRNN class accept's as input embedded input features corresponding to a single image.
 * It return's as output a Python list output, indicating the predicted sentence. output[i] is a nonnegative integer that identifies the predicted i-th token in the sentence. 
 * The correspondence between integers and tokens is in the wor2idx dictionary.
-###``Notebook 3``
+
+### ``Notebook 3``
 * The training of the model is done in this notebook
 * We inititialize the data_loader, encoder and decoder. Only the decoder parametrs and encoder last embed layer parameters are trainable.
