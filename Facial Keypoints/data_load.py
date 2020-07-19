@@ -10,7 +10,8 @@ import cv2
 
 class FacialKeypointsDataset(Dataset):
     """Face Landmarks dataset."""
-
+    #init is always executes when the class is created
+    #hence all variables are made
     def __init__(self, csv_file, root_dir, transform=None):
         """
         Args:
@@ -26,18 +27,23 @@ class FacialKeypointsDataset(Dataset):
     def __len__(self):
         return len(self.key_pts_frame)
 
+    def get_keypoints(self,n):
+      key_pts = np.array(self.key_pts_frame.iloc[n,1:])
+      key_pts = np.reshape( key_pts,(-1,2)).astype('float32') 
+      return key_pts    
+
     def __getitem__(self, idx):
+        #all the images are in the root_dir and their name are in the first column of the keypoints dataframe
         image_name = os.path.join(self.root_dir,
                                 self.key_pts_frame.iloc[idx, 0])
         
         image = mpimg.imread(image_name)
         
         # if image has an alpha color channel, get rid of it
-        if(image.shape[2] == 4):
-            image = image[:,:,0:3]
+        if(image.shape[2] == 4): #the last number in image.shape is number of color channel. if RGBA then '4' no of color channel
+            image = image[:,:,0:3]   #reduce to RGB
         
-        key_pts = self.key_pts_frame.iloc[idx, 1:].as_matrix()
-        key_pts = key_pts.astype('float').reshape(-1, 2)
+        key_pts = self.get_keypoints(idx)
         sample = {'image': image, 'keypoints': key_pts}
 
         if self.transform:
@@ -46,7 +52,6 @@ class FacialKeypointsDataset(Dataset):
         return sample
     
 
-    
 # tranforms
 
 class Normalize(object):
