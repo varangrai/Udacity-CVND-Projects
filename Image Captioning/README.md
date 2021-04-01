@@ -27,6 +27,6 @@
 * We inititialize the data_loader, encoder and decoder. Only the decoder parametrs and encoder last embed layer parameters are trainable.
 
 
-##### Sample Results
+## Sample Results
 ______________
 ![alt text](https://github.com/varangrai/Udacity-CVND-Projects/blob/master/Image%20Captioning/Results.png?raw=true)
