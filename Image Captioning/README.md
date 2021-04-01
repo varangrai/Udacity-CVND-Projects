@@ -25,3 +25,8 @@
 ### ``Notebook 3``
 * The training of the model is done in this notebook
 * We inititialize the data_loader, encoder and decoder. Only the decoder parametrs and encoder last embed layer parameters are trainable.
+
+
+##### Sample Results
+______________
+![alt text](https://github.com/varangrai/Udacity-CVND-Projects/blob/master/Image%20Captioning/Results.png?raw=true)
